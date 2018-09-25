@@ -10,8 +10,10 @@ ZSH=$HOME/.oh-my-zsh
 #ZSH_THEME="risto"
 #ZSH_THEME="michelebologna"
 ##ZSH_THEME="clean"
-ZSH_THEME="powerlevel9k/powerlevel9k"
+# mode must be set before we set the theme
+# or we get the default
 POWERLEVEL9K_MODE='nerdfont-complete'
+ZSH_THEME="powerlevel9k/powerlevel9k"
 #ZSH_THEME="random"
 #ZSH_THEME="xiong-chiamiov-plus"
 #ZSH_THEME="sporty_256"
@@ -119,6 +121,21 @@ alias pydoc='pydoc3'
 alias pip='pip3'
 
 source $ZSH/oh-my-zsh.sh
+
+# configure powerlevel9k prompt
+#POWERLEVEL9K_MODE='agnoster'
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
+#POWERLEVEL9K_SHORTEN_STRATEGY="truncate_with_folder_marker"
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon dir vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator nvm time)
+
+
+POWERLEVEL9K_OS_ICON_BACKGROUND="white"
+POWERLEVEL9K_OS_ICON_FOREGROUND="blue"
+POWERLEVEL9K_DIR_HOME_FOREGROUND="white"
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="white"
+POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="white"
+
 
 # https://github.com/andsens/homeshick
 export HOMESHICK_DIR=/usr/local/opt/homeshick
