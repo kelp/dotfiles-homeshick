@@ -1,2 +1,2 @@
 # dotfiles
-# Dotfiles managed by https://github.com/andsens/homeshick
+Dotfiles managed by https://github.com/andsens/homeshick
