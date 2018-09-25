@@ -8,6 +8,9 @@ fi
 
 case "$(uname)" in
   Darwin)
+  # If we don't set this, git commit will use OS X's old vim version that
+  # breaks SpaceVim
+  export EDITOR=nvim
   export GOPATH=$HOME/dev
 
   export PATH=$HOME/bin:$HOME/Library/Python/3.7/bin:$PATH
