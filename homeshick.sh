@@ -63,6 +63,10 @@ if [[ ! -f $HOME/.homesick/repos/homeshick/homeshick.sh ]]; then
   git clone git://github.com/andsens/homeshick.git $HOME/.homesick/repos/homeshick
 fi
 
+if [[ ! -f $HOME/.oh-my-zsh/custom/themes/powerlevel9k ]]; then
+  git clone https://github.com/bhilburn/powerlevel9k.git $HOME/.oh-my-zsh/custom/themes/powerlevel9k
+fi
+
 source $HOME/.homesick/repos/homeshick/homeshick.sh
 
 for castle in "${castles[@]}"; do
