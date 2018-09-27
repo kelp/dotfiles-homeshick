@@ -106,6 +106,11 @@ POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ssh os_icon dir_writable dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator nvm time)
 
+# Get the timezone for the prompt
+# This is nice because some servers use UTC, but
+# I'm usually on PST or PDT for my desktops
+TZONE=$(date +%Z)
+POWERLEVEL9K_TIME_FORMAT="%D{%H:%M:%S} $TZONE"
 POWERLEVEL9K_OS_ICON_BACKGROUND="white"
 POWERLEVEL9K_OS_ICON_FOREGROUND="blue"
 POWERLEVEL9K_DIR_HOME_FOREGROUND="white"
