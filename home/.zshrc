@@ -73,7 +73,7 @@ case "$OS" in
   Darwin)
     plugins=($UNIVERSAL_PLUGINS brew osx)
     # https://github.com/andsens/homeshick
-    # installed with homebrew on OSX
+    # installed with homebrew on macOS
     export HOMESHICK_DIR=/usr/local/opt/homeshick
     source "/usr/local/opt/homeshick/homeshick.sh"
     fpath=(/usr/local/share/zsh/site-functions $fpath)
