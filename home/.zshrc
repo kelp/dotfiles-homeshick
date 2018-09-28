@@ -72,6 +72,11 @@ UNIVERSAL_PLUGINS='command-not-found docker extract gem git git-extras github go
 case "$OS" in
   Darwin)
     plugins=($UNIVERSAL_PLUGINS brew osx)
+    # https://github.com/andsens/homeshick
+    # installed with homebrew on OSX
+    export HOMESHICK_DIR=/usr/local/opt/homeshick
+    source "/usr/local/opt/homeshick/homeshick.sh"
+    fpath=(/usr/local/share/zsh/site-functions $fpath)
     ;;
   'Arch Linux')
     plugins=($UNIVERSAL_PLUGINS archlinux terminator gnu-utils)
