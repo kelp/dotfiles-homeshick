@@ -100,7 +100,7 @@ esac
 alias python='python3'
 alias pydoc='pydoc3'
 alias pip='pip3'
-# use neovim
+# use Neovim
 alias vim='nvim'
 alias vi='nvim'
 
@@ -124,3 +124,18 @@ POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="white"
 
 export EDITOR=nvim
 export VISUAL=$EDITOR
+# Convenciences for tweaking nvim
+export VIMCONFIG=~/.config/nvim
+export VIMDATA=~/.local/share/nvim
+# Use ripgrep for FZF
+export FZF_DEFAULT_COMMAND='rg --files'
+export VIMRC=$HOME/.config/nvim/init.vim
+
+# Prevent running nvim inside a nvim terminal
+if [ -n "$NVIM_LISTEN_ADDRESS" ]; then 
+	if [ -x "$(command -v nvr)" ]; then
+		alias nvim=nvr
+	else
+		alias nvim='echo "No nesting!"' 
+	fi
+fi
