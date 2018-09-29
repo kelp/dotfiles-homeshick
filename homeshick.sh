@@ -28,6 +28,7 @@ cat <<'EOF' > $tmpfile
 
 # Main castles
 kelp/dotfiles
+kelp/nvim
 #sukima/vimrc
 #sukima/tmuxrc
 
