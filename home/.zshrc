@@ -66,6 +66,12 @@ linux_config(){
     export HOMESHICK_DIR=$HOME/.homesick/repos/homeshick
     source "$HOME/.homesick/repos/homeshick/homeshick.sh"
     fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
+
+    # Gnome Keyring to load ssh-agent
+    if [ -n "$DESKTOP_SESSION" ];then
+        eval $(gnome-keyring-daemon --start)
+        export SSH_AUTH_SOCK
+    fi
 }
 
 UNIVERSAL_PLUGINS='command-not-found docker extract gem git git-extras github go python screen vscode'
