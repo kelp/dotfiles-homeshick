@@ -29,6 +29,10 @@ cat <<'EOF' > $tmpfile
 # Main castles
 kelp/dotfiles
 kelp/nvim
+kelp/x11
+kelp/termite
+kelp/redshift
+kelp/i3wm
 #sukima/vimrc
 #sukima/tmuxrc
 
