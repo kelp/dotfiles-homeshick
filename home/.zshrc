@@ -133,9 +133,9 @@ export VISUAL=$EDITOR
 # Convenciences for tweaking nvim
 export VIMCONFIG=~/.config/nvim
 export VIMDATA=~/.local/share/nvim
+export MYVIMRC=$HOME/.config/nvim/init.vim
 # Use ripgrep for FZF
 export FZF_DEFAULT_COMMAND='rg --files'
-export VIMRC=$HOME/.config/nvim/init.vim
 
 # Prevent running nvim inside a nvim terminal
 if [ -n "$NVIM_LISTEN_ADDRESS" ]; then 
