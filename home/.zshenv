@@ -19,7 +19,7 @@ case "$(uname)" in
   Darwin)
   export GOPATH=$HOME/dev
 
-  export PATH=$HOME/bin:$HOME/Library/Python/3.7/bin:$PATH
+  export PATH=$HOME/bin:$GOPATH/bin:$HOME/Library/Python/3.7/bin:$PATH
     ;;
   Linux)
     ;;
