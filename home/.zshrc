@@ -128,15 +128,6 @@ POWERLEVEL9K_DIR_HOME_FOREGROUND="white"
 POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="white"
 POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="white"
 
-export EDITOR=nvim
-export VISUAL=$EDITOR
-# Convenciences for tweaking nvim
-export VIMCONFIG=~/.config/nvim
-export VIMDATA=~/.local/share/nvim
-export MYVIMRC=$HOME/.config/nvim/init.vim
-# Use ripgrep for FZF
-export FZF_DEFAULT_COMMAND='rg --files'
-
 # Prevent running nvim inside a nvim terminal
 if [ -n "$NVIM_LISTEN_ADDRESS" ]; then 
 	if [ -x "$(command -v nvr)" ]; then
@@ -152,3 +143,5 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 [ -n "$PS1" ] && \
     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
         eval "$("$BASE16_SHELL/profile_helper.sh")"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
