@@ -109,6 +109,7 @@ alias pip='pip3'
 # use Neovim
 alias vim='nvim'
 alias vi='nvim'
+alias view='nvim -R'
 
 source $ZSH/oh-my-zsh.sh
 
