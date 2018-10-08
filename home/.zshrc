@@ -74,7 +74,7 @@ linux_config(){
     fi
 }
 
-UNIVERSAL_PLUGINS='command-not-found docker extract gem git git-extras github go python screen vscode'
+UNIVERSAL_PLUGINS='command-not-found docker extract gem git git-extras github go python screen sudo vscode vi-mode'
 case "$OS" in
   Darwin)
     plugins=($UNIVERSAL_PLUGINS brew osx)
@@ -85,11 +85,11 @@ case "$OS" in
     fpath=(/usr/local/share/zsh/site-functions $fpath)
     ;;
   'Arch Linux')
-    plugins=($UNIVERSAL_PLUGINS archlinux terminator gnu-utils)
+    plugins=($UNIVERSAL_PLUGINS archlinux gnu-utils systemd)
     linux_config
     ;;
   'Debian GNU/Linux'|Ubuntu)
-    plugins=($UNIVERSAL_PLUGINS debian gnu-utils)
+    plugins=($UNIVERSAL_PLUGINS command-not-found debian gnu-utils systemd)
     linux_config
     ;;
   OpenBSD)
@@ -110,6 +110,9 @@ alias pip='pip3'
 alias vim='nvim'
 alias vi='nvim'
 alias view='nvim -R'
+
+# Enable vi mode
+bindkey -v
 
 source $ZSH/oh-my-zsh.sh
 
