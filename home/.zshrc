@@ -74,7 +74,7 @@ linux_config(){
     fi
 }
 
-UNIVERSAL_PLUGINS='command-not-found docker extract gem git git-extras github go python screen sudo vscode vi-mode'
+UNIVERSAL_PLUGINS='command-not-found docker extract gem git git-extras github go python screen sudo vscode'
 case "$OS" in
   Darwin)
     plugins=($UNIVERSAL_PLUGINS brew osx)
@@ -112,7 +112,7 @@ alias vi='nvim'
 alias view='nvim -R'
 
 # Enable vi mode
-bindkey -v
+# bindkey -v
 
 source $ZSH/oh-my-zsh.sh
 
