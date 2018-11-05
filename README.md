@@ -1,6 +1,9 @@
 # dotfiles
 Dotfiles managed by https://github.com/andsens/homeshick
 
+Install oh-my-zsh first:
+https://github.com/robbyrussell/oh-my-zsh
+
 Bootstrap with:
 ```
 $ bash <(curl https://raw.githubusercontent.com/kelp/dotfiles/master/homeshick.sh)
