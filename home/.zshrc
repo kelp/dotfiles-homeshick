@@ -149,3 +149,6 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
         eval "$("$BASE16_SHELL/profile_helper.sh")"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export GPG_TTY=$(tty)
+gpg-connect-agent updatestartuptty /bye > /dev/null
