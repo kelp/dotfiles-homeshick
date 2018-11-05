@@ -29,7 +29,9 @@ cat <<'EOF' > $tmpfile
 # Main castles
 kelp/dotfiles
 kelp/nvim
-kelp/x11
+# Uncomment one of below if on those systems
+#kelp/x11-arch-matebook
+#kelp/x11-arch-pc
 kelp/termite
 kelp/redshift
 kelp/i3wm

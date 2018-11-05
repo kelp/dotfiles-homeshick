@@ -1,24 +1,25 @@
 # dotfiles
-Dotfiles managed by https://github.com/andsens/homeshick
-
-Install oh-my-zsh first:
-https://github.com/robbyrussell/oh-my-zsh
 
 Bootstrap with:
+
 ```
-$ bash <(curl https://raw.githubusercontent.com/kelp/dotfiles/master/homeshick.sh)
+$ bash <(curl https://raw.githubusercontent.com/kelp/dotfiles/master/boot.sh)
 ```
 
-# HOWTO / TODO
-Various setup things that need to move into the bootstrap file and get 
-automated. Need to integrate this with my older kelp-config bootstrap.
+This is the entry point that will pull in several 
+[homeshick](https://github.com/andsens/homeshick) castles, and some other 
+bootstrapping. This is also a homeshick castle that contains my zsh configs
+and a few other misc things, like my git config.
 
-# Document / automate Font Install, I'm using hack-nerd-font
+It will first try to install [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
 
-# install powerline-status
-# OS X
-pip install --user powerline-status
-# neovim doesn't need to have python compiled in, but it does need
-# this module
-pip3 install --user neovim
+Then [homeshick](https://github.com/andsens/homeshick)
 
+It assumes a few things have already been installed:
+
+zsh
+neovim
+python-neovim
+git
+gpg
+hack-nerd-font
