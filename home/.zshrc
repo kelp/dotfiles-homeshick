@@ -91,6 +91,9 @@ case "$OS" in
   'Debian GNU/Linux'|Ubuntu)
     plugins=($UNIVERSAL_PLUGINS command-not-found debian gnu-utils systemd)
     linux_config
+    if [ $TERM = xterm-termite ]; then
+        export TERM=xterm-256color
+    fi
     ;;
   OpenBSD)
     plugins=($UNIVERSAL_PLUGINS gnu-utils)
