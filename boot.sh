@@ -14,5 +14,5 @@ fi
 if [ -d $HOME/.homesick ]; then
     echo "Skipping Homeshick install, it seems to already exist"
 else
-    bash <(curl https://raw.githubusercontent.com/kelp/dotfiles/master/homeshick.sh)
+    bash -c "$(curl https://raw.githubusercontent.com/kelp/dotfiles/master/homeshick.sh)"
 fi
