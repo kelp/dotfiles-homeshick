@@ -7,7 +7,7 @@
 if [ -d $HOME/.oh-my-zsh ]; then
     echo "Skipping oh my zsh install, it seems to already exist"
 else
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    bash -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 fi
 
 # Bootstrap homeshick if we don't already have it
