@@ -16,3 +16,10 @@ if [ -d $HOME/.homesick ]; then
 else
     bash -c "$(curl https://raw.githubusercontent.com/kelp/dotfiles/master/homeshick.sh)"
 fi
+
+# Set the terminfo for termite if we need to
+if infocmp > /dev/null; then
+    echo "TERM looks good"
+else
+    curl https://raw.githubusercontent.com/thestinger/termite/master/termite.terminfo | tic -x -
+fi
