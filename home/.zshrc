@@ -71,6 +71,8 @@ linux_config(){
     if [ -n "$DESKTOP_SESSION" ];then
         eval $(gnome-keyring-daemon --start)
         export SSH_AUTH_SOCK
+        export GPG_TTY=$(tty)
+        gpg-connect-agent updatestartuptty /bye > /dev/null
     fi
 }
 
@@ -91,9 +93,6 @@ case "$OS" in
   'Debian GNU/Linux'|Ubuntu)
     plugins=($UNIVERSAL_PLUGINS command-not-found debian gnu-utils systemd)
     linux_config
-    if [ $TERM = xterm-termite ]; then
-        export TERM=xterm-256color
-    fi
     ;;
   OpenBSD)
     plugins=($UNIVERSAL_PLUGINS gnu-utils)
@@ -152,6 +151,3 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
         eval "$("$BASE16_SHELL/profile_helper.sh")"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-export GPG_TTY=$(tty)
-gpg-connect-agent updatestartuptty /bye > /dev/null
