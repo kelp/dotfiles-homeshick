@@ -3,7 +3,7 @@
 # bootstrap script to install Homeshick and you preferred castles to a new
 # system.
 
-tmpfilename="/tmp/${0##*/}.XXXXX"
+tmpfilename="/tmp/${0##*/}.XXXXXX"
 
 if type mktemp >/dev/null; then
   tmpfile=$(mktemp $tmpfilename)
