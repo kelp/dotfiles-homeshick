@@ -76,6 +76,16 @@ linux_config(){
     fi
 }
 
+# Aliases
+# Use python3 rather than the system python, which is often still python2
+alias python='python3'
+alias pydoc='pydoc3'
+alias pip='pip3'
+# use Neovim
+alias vim='nvim'
+alias vi='nvim'
+alias view='nvim -R'
+
 UNIVERSAL_PLUGINS='command-not-found docker extract gem git git-extras github go python screen sudo vscode'
 case "$OS" in
   Darwin)
@@ -85,6 +95,8 @@ case "$OS" in
     export HOMESHICK_DIR=/usr/local/opt/homeshick
     source "/usr/local/opt/homeshick/homeshick.sh"
     fpath=(/usr/local/share/zsh/site-functions $fpath)
+    export GPG_TTY=$(tty)
+    gpg-connect-agent updatestartuptty /bye > /dev/null
     ;;
   'Arch Linux')
     plugins=($UNIVERSAL_PLUGINS archlinux gnu-utils systemd)
@@ -100,18 +112,9 @@ case "$OS" in
     export HOMESHICK_DIR=$HOME/.homesick/repos/homeshick
     source "$HOME/.homesick/repos/homeshick/homeshick.sh"
     fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
+    alias pip='pip3.6'
     ;;
 esac
-
-# Aliases
-# Use python3 rather than the system python, which is often still python2
-alias python='python3'
-alias pydoc='pydoc3'
-alias pip='pip3'
-# use Neovim
-alias vim='nvim'
-alias vi='nvim'
-alias view='nvim -R'
 
 # Enable vi mode
 # bindkey -v
