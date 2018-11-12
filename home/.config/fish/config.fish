@@ -1,5 +1,6 @@
 # Fish Config
 #
+
 # Bootstrap fisher https://github.com/jorgebucaran/fisher
 if not functions -q fisher; and status --is-interactive
     set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
@@ -7,9 +8,7 @@ if not functions -q fisher; and status --is-interactive
     echo "fisher installed, you may need to restart this shell to use it"
 end
 
-# Plugins I may need to use:
-# https://github.com/oh-my-fish/plugin-local-config
-
+# bobthefish settings https://github.com/oh-my-fish/theme-bobthefish
 set -g theme_powerline_fonts yes
 set -g theme_nerd_fonts yes
 set -g theme_display_user ssh
@@ -30,25 +29,47 @@ set -g theme_date_format "+%H:%M:%S:$TZONE"
 
 # disable the theme greeting
 function fish_greeting
-    uptime
     set_color normal
 end
 
 # Initialize the keycghain plugin
 # https://github.com/jitakirin/pkg-keychain
-set -U keychain_init_args --quiet --agents ssh,gpg --inherit local
+#if status --is-interactive
+#    set -U keychain_init_args --quiet --agents ssh,gpg --inherit local id_rsa F1C6003020E496A1BAEC71CA67E4246BD03CB8A7
+#end
 
-set -x EDITOR "nvim"
-set -x VISUAL "$EDITOR"
-set -x MYVIMRC "$HOME/.config/nvim/init.vim"
-set -x GOPATH "$HOME/src"
-
+# Aliases
 alias vi="nvim"
 alias view="nvim -R"
 
 alias python="python3"
 alias pip="pip3"
 alias pydoc="pydoc3"
+
+# OS specific Configs 
+set -x OS (uname -s)
+
+switch $OS
+    case Linux
+        if set -q DESKTOP_SESSION
+            set -gx SSH_AUTH_SOCK (gnome-keyring-daemon --start | awk -F "=" '$1 == "SSH_AUTH_SOCK" { print $2 }')
+        end
+    case OpenBSD
+        alias pip='pip3.6'
+    case Darwin
+        # Nothing custom yet
+    case '*'
+        echo "I don't know what OS this is"
+end
+
+set -gx GPG_TTY (tty)
+gpg-connect-agent updatestartuptty /bye > /dev/null 
+
+set -x EDITOR "nvim"
+set -x VISUAL "$EDITOR"
+set -x MYVIMRC "$HOME/.config/nvim/init.vim"
+set -x GOPATH "$HOME/src"
+
 
 # https://github.com/andsens/homeshick/ manages my dotfiles
 source "$HOME/.homesick/repos/homeshick/homeshick.fish"

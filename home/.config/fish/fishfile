@@ -1,5 +1,5 @@
 # Configuration for the fisher package manager
-# https://github.com/jorgebucaran/fisher
+jorgebucaran/fisher
 # This file is edited by the fisher command
 oh-my-fish/theme-bobthefish
 oh-my-fish/plugin-python
@@ -7,3 +7,4 @@ willfish/plugin-plug
 jdxcode/gh
 jethrokuan/fzf
 derekstavis/fish-neovim
+jitakirin/pkg-keychain
