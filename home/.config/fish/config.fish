@@ -1,39 +1,10 @@
 # Fish Config
 #
-
-# Auto-install oh-my-fish if we don't have it
-# Only run on interactive shells, and check if omf is already # installed 
-# before running.
-# 
-# Currently if you do an 'omf destroy' with this conifg it will
-# just reinstall omf directly after
-# if status --is-interactive; and not functions -q omf
-#     set tmpdir (mktemp -d)
-#     function cleanup --on-event clean_tmp
-#         echo "Cleaning $tmpdir"
-#         rm -rf $tmpdir
-#     end
-
-#     # the installer sha256
-#     echo "06844ca6876fac0ea949c8089d8c5f71e14b69d2bb1dc41f1d0677250a1c62e1  $tmpdir/install" > $tmpdir/install.sha256
-#     curl -sL https://get.oh-my.fish > $tmpdir/install
-
-#     echo "One time oh-my-fish bootstap...please hold..."
-#     if shasum -s -c $tmpdir/install.sha256
-#         fish $tmpdir/install --path=~/.local/share/omf --config=~/.config/omf
-#         # This won't run until the current shell exits because the above 
-#         # installer does an exec fish.
-#         emit clean_tmp
-#     else
-#         echo "couldn't boostrap oh-my-fsh, check installer sha"
-#     end
-# end
-#
 # Bootstrap fisher https://github.com/jorgebucaran/fisher
-if not functions -q fisher
+if not functions -q fisher; and status --is-interactive
     set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
     curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
-    fish -c fisher
+    echo "fisher installed, you may need to restart this shell to use it"
 end
 
 # Plugins I may need to use:
