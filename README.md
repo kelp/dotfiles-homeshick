@@ -1,5 +1,15 @@
 # dotfiles
 
+Layout of my homeshick castles:
+
+* x11-common x11, and app configs that are common across systems
+* dotfiles, this entry point, bootstrap homeshick, shell and git configs
+* i3wm, maybe move to x11-common
+* redshift, maybe move to x11-common
+* termite, maybe move to x11-common or host specific
+* x11-arch-pc, x11 configs specific to my desktop pc
+* x11-matebook-x-pro, x11 conigs specific to my matebook
+
 Bootstrap with:
 
 ```

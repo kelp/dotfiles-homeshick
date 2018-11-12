@@ -1,34 +1,6 @@
 # Fish Config
 #
 
-# Auto-install oh-my-fish if we don't have it
-# Only run on interactive shells, and check if omf is already # installed 
-# before running.
-# 
-# Currently if you do an 'omf destroy' with this conifg it will
-# just reinstall omf directly after
-# if status --is-interactive; and not functions -q omf
-#     set tmpdir (mktemp -d)
-#     function cleanup --on-event clean_tmp
-#         echo "Cleaning $tmpdir"
-#         rm -rf $tmpdir
-#     end
-
-#     # the installer sha256
-#     echo "06844ca6876fac0ea949c8089d8c5f71e14b69d2bb1dc41f1d0677250a1c62e1  $tmpdir/install" > $tmpdir/install.sha256
-#     curl -sL https://get.oh-my.fish > $tmpdir/install
-
-#     echo "One time oh-my-fish bootstap...please hold..."
-#     if shasum -s -c $tmpdir/install.sha256
-#         fish $tmpdir/install --path=~/.local/share/omf --config=~/.config/omf
-#         # This won't run until the current shell exits because the above 
-#         # installer does an exec fish.
-#         emit clean_tmp
-#     else
-#         echo "couldn't boostrap oh-my-fsh, check installer sha"
-#     end
-# end
-#
 # Bootstrap fisher https://github.com/jorgebucaran/fisher
 if not functions -q fisher
     set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
@@ -36,9 +8,7 @@ if not functions -q fisher
     fish -c fisher
 end
 
-# Plugins I may need to use:
-# https://github.com/oh-my-fish/plugin-local-config
-
+# bobthefish settings https://github.com/oh-my-fish/theme-bobthefish
 set -g theme_powerline_fonts yes
 set -g theme_nerd_fonts yes
 set -g theme_display_user ssh
@@ -59,25 +29,47 @@ set -g theme_date_format "+%H:%M:%S:$TZONE"
 
 # disable the theme greeting
 function fish_greeting
-    uptime
     set_color normal
 end
 
 # Initialize the keycghain plugin
 # https://github.com/jitakirin/pkg-keychain
-set -U keychain_init_args --quiet --agents ssh,gpg --inherit local
+#if status --is-interactive
+#    set -U keychain_init_args --quiet --agents ssh,gpg --inherit local id_rsa F1C6003020E496A1BAEC71CA67E4246BD03CB8A7
+#end
 
-set -x EDITOR "nvim"
-set -x VISUAL "$EDITOR"
-set -x MYVIMRC "$HOME/.config/nvim/init.vim"
-set -x GOPATH "$HOME/src"
-
+# Aliases
 alias vi="nvim"
 alias view="nvim -R"
 
 alias python="python3"
 alias pip="pip3"
 alias pydoc="pydoc3"
+
+# OS specific Configs 
+set -x OS (uname -s)
+
+switch $OS
+    case Linux
+        if set -q DESKTOP_SESSION
+            set -gx SSH_AUTH_SOCK (gnome-keyring-daemon --start | awk -F "=" '$1 == "SSH_AUTH_SOCK" { print $2 }')
+        end
+    case OpenBSD
+        alias pip='pip3.6'
+    case Darwin
+        # Nothing custom yet
+    case '*'
+        echo "I don't know what OS this is"
+end
+
+set -gx GPG_TTY (tty)
+gpg-connect-agent updatestartuptty /bye > /dev/null 
+
+set -x EDITOR "nvim"
+set -x VISUAL "$EDITOR"
+set -x MYVIMRC "$HOME/.config/nvim/init.vim"
+set -x GOPATH "$HOME/src"
+
 
 # https://github.com/andsens/homeshick/ manages my dotfiles
 source "$HOME/.homesick/repos/homeshick/homeshick.fish"
