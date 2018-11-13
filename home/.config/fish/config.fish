@@ -62,6 +62,7 @@ switch $OS
         end
     case OpenBSD
         alias pip='pip3.6'
+        alias tar='gtar'
     case Darwin
         gpgagent
     case '*'
