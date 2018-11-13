@@ -46,6 +46,11 @@ alias python="python3"
 alias pip="pip3"
 alias pydoc="pydoc3"
 
+function gpgagent
+    set -gx GPG_TTY (tty)
+    gpg-connect-agent updatestartuptty /bye > /dev/null 
+end
+
 # OS specific Configs 
 set -x OS (uname -s)
 
@@ -53,17 +58,16 @@ switch $OS
     case Linux
         if set -q DESKTOP_SESSION
             set -gx SSH_AUTH_SOCK (gnome-keyring-daemon --start | awk -F "=" '$1 == "SSH_AUTH_SOCK" { print $2 }')
+            gpgagent
         end
     case OpenBSD
         alias pip='pip3.6'
     case Darwin
-        # Nothing custom yet
+        gpgagent
     case '*'
         echo "I don't know what OS this is"
 end
 
-set -gx GPG_TTY (tty)
-gpg-connect-agent updatestartuptty /bye > /dev/null 
 
 set -x EDITOR "nvim"
 set -x VISUAL "$EDITOR"
