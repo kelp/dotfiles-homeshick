@@ -8,6 +8,10 @@ if not functions -q fisher; and status --is-interactive
     echo "fisher installed, you may need to restart this shell to use it"
 end
 
+if [ -f $HOME/.work/work.fish ]
+    source $HOME/.work/work.fish
+end
+
 # bobthefish settings https://github.com/oh-my-fish/theme-bobthefish
 set -g theme_powerline_fonts yes
 set -g theme_nerd_fonts yes
