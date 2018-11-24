@@ -1,6 +1,5 @@
 # Fish Config
 #
-
 # Bootstrap fisher https://github.com/jorgebucaran/fisher
 if not functions -q fisher; and status --is-interactive
     set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
