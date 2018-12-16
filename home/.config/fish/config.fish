@@ -79,6 +79,7 @@ set -x VISUAL "$EDITOR"
 set -x MYVIMRC "$HOME/.config/nvim/init.vim"
 set -x GOPATH "$HOME/src"
 set -x PATH $HOME/bin $PATH
+# set -x GTK_THEME Adapta
 
 
 # https://github.com/andsens/homeshick/ manages my dotfiles
