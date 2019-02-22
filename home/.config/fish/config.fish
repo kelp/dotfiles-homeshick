@@ -77,7 +77,7 @@ set -x EDITOR "nvim"
 set -x VISUAL "$EDITOR"
 set -x MYVIMRC "$HOME/.config/nvim/init.vim"
 set -x GOPATH "$HOME/src"
-set -x PATH $HOME/bin $PATH
+set -x PATH $HOME/bin (yarn global bin 2> /dev/null) $PATH
 # set -x GTK_THEME Adapta
 
 
