@@ -11,6 +11,10 @@ if [ -f $HOME/.work/work.fish ]
     source $HOME/.work/work.fish
 end
 
+if [ -f $HOME/.config/fish/local.config.fish ]
+    source $HOME/.config/fish/local.config.fish
+end
+
 # bobthefish settings https://github.com/oh-my-fish/theme-bobthefish
 set -g theme_powerline_fonts yes
 set -g theme_nerd_fonts yes
