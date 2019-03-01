@@ -81,9 +81,15 @@ set -x EDITOR "nvim"
 set -x VISUAL "$EDITOR"
 set -x MYVIMRC "$HOME/.config/nvim/init.vim"
 set -x GOPATH "$HOME/src"
-set -x PATH $HOME/bin (yarn global bin 2> /dev/null) $PATH
+
+set -x npm_config_prefix $HOME/.node_modules
+
+set -x PATH $HOME/bin $HOME/.node_modules/bin /usr/local/sbin $PATH
 # set -x GTK_THEME Adapta
 
+if [ -f $HOME/.work/work.fish ]
+    source $HOME/.work/work.fish
+end
 
 # https://github.com/andsens/homeshick/ manages my dotfiles
 source "$HOME/.homesick/repos/homeshick/homeshick.fish"
