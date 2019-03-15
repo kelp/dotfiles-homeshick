@@ -70,6 +70,7 @@ switch $OS
     case OpenBSD
         alias pip='pip3.6'
         alias tar='gtar'
+        alias ls='gls'
         set -x TERM xterm-color
     case Darwin
         gpgagent
