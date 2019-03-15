@@ -30,14 +30,15 @@ cat <<'EOF' > $tmpfile
 kelp/dotfiles
 kelp/nvim
 # Uncomment one of below if on those systems
+#kelp/i3status-rs-archbook
+#kelp/i3wm
+#kelp/redshift
 #kelp/x11-arch-matebook
-#kelp/x11-arch-pc
-kelp/x11-common
-kelp/termite
-kelp/redshift
-kelp/i3wm
-#sukima/vimrc
-#sukima/tmuxrc
+#kelp/x11-common
+
+# Unused
+#kelp/termite
+
 
 # Private castles (commented by default)
 #sukima/muttrc
