@@ -7,12 +7,6 @@ if not functions -q fisher; and status --is-interactive
     echo "fisher installed, you may need to restart this shell to use it"
 end
 
-if infocmp alacritty > /dev/null 2>&1
-    set -x TERM alacritty
-else
-    set -x TERM xterm-color
-end
-
 if [ -f $HOME/.work/work.fish ]
     source $HOME/.work/work.fish
 end
@@ -76,6 +70,7 @@ switch $OS
     case OpenBSD
         alias pip='pip3.6'
         alias tar='gtar'
+        set -x TERM xterm-color
     case Darwin
         gpgagent
     case '*'
