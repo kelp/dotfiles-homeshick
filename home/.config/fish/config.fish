@@ -7,6 +7,12 @@ if not functions -q fisher; and status --is-interactive
     echo "fisher installed, you may need to restart this shell to use it"
 end
 
+if infocmp alacritty 2>&1 /dev/null
+    set -x TERM alacritty
+else
+    set -x TERM xterm-color
+end
+
 if [ -f $HOME/.work/work.fish ]
     source $HOME/.work/work.fish
 end
@@ -74,12 +80,6 @@ switch $OS
         gpgagent
     case '*'
         echo "I don't know what OS this is"
-end
-
-if infocmp alacritty > /dev/null
-    set -x TERM alacritty
-else
-    set -x TERM xterm-color
 end
 
 set -x EDITOR "nvim"
