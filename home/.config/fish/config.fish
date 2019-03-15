@@ -76,6 +76,11 @@ switch $OS
         echo "I don't know what OS this is"
 end
 
+if infocmp alacritty > /dev/null
+    set -x TERM alacritty
+else
+    set -x TERM xterm-color
+end
 
 set -x EDITOR "nvim"
 set -x VISUAL "$EDITOR"
