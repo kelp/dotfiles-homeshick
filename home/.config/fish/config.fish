@@ -84,7 +84,11 @@ set -x GOPATH "$HOME/src"
 
 set -x npm_config_prefix $HOME/.node_modules
 
-set -x PATH $HOME/bin $HOME/.node_modules/bin /usr/local/sbin $PATH
+if [ -d $HOME/.node_modules/bin ]
+    set -x PATH $HOME/bin $HOME/.node_modules/bin /usr/local/sbin $PATH
+else
+    set -x PATH $HOME/bin /usr/local/sbin $PATH
+end
 # set -x GTK_THEME Adapta
 
 if [ -f $HOME/.work/work.fish ]
