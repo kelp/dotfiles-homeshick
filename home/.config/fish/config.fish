@@ -79,18 +79,20 @@ if status --is-interactive;
     set -x EDITOR "nvim"
     set -x VISUAL "$EDITOR"
     set -x MYVIMRC "$HOME/.config/nvim/init.vim"
+    set -x ELECTRON_TRASH "trash-cli code"
 
     set -x npm_config_prefix $HOME/.node_modules
 
-    if [ -d $HOME/.node_modules/bin ]
-        set -x PATH $HOME/bin $HOME/.node_modules/bin /usr/local/sbin $PATH
-    else
-        set -x PATH $HOME/bin /usr/local/sbin $PATH
-    end
 end
 
 # Global configs for interactive and non-interactive shells
 set -x GOPATH "$HOME/src"
+
+if [ -d $HOME/.node_modules/bin ]
+    set -x PATH $HOME/bin $HOME/.node_modules/bin /usr/local/sbin $PATH
+else
+    set -x PATH $HOME/bin $GOPATH/bin /usr/local/sbin $PATH
+end
 
 # Global aliases
 alias python="python3"
