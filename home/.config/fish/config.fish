@@ -65,7 +65,7 @@ if status --is-interactive;
         case OpenBSD
             alias pip='pip3.6'
             alias tar='gtar'
-            alias ls='gls'
+            alias ls='gls --color'
             set -x TERM xterm-color
         case Darwin
             gpgagent
