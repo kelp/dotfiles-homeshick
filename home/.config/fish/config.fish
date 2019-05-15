@@ -50,6 +50,7 @@ if status --is-interactive;
 
     function gpgagent
         set -gx GPG_TTY (tty)
+        gpgconf --create-socketdir
         gpg-connect-agent updatestartuptty /bye > /dev/null 
     end
 
@@ -60,8 +61,8 @@ if status --is-interactive;
         case Linux
             if set -q DESKTOP_SESSION
                 set -gx SSH_AUTH_SOCK (gnome-keyring-daemon --start | awk -F "=" '$1 == "SSH_AUTH_SOCK" { print $2 }')
-                gpgagent
             end
+            gpgagent
         case OpenBSD
             alias pip='pip3.6'
             alias tar='gtar'
