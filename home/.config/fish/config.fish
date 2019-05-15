@@ -50,7 +50,9 @@ if status --is-interactive;
 
     function gpgagent
         set -gx GPG_TTY (tty)
-        gpgconf --create-socketdir
+        if [ $argv[1] = "Linux" ]
+            gpgconf --create-socketdir
+        end
         gpg-connect-agent updatestartuptty /bye > /dev/null 
     end
 
@@ -65,14 +67,14 @@ if status --is-interactive;
             if [ -n "$SSH_CONNECTION" ]
                 set -x PINENTRY_USER_DATA "USE_CURSES=1"
             end
-            gpgagent
+            gpgagent $OS
         case OpenBSD
             alias pip='pip3.6'
             alias tar='gtar'
             alias ls='gls --color'
             set -x TERM xterm-color
         case Darwin
-            gpgagent
+            gpgagent $OS
         case '*'
             echo "I don't know what OS this is"
     end
