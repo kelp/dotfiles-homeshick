@@ -62,6 +62,9 @@ if status --is-interactive;
             if set -q DESKTOP_SESSION
                 set -gx SSH_AUTH_SOCK (gnome-keyring-daemon --start | awk -F "=" '$1 == "SSH_AUTH_SOCK" { print $2 }')
             end
+            if [ -n "$SSH_CONNECTION" ]
+                set -x PINENTRY_USER_DATA "USE_CURSES=1"
+            end
             gpgagent
         case OpenBSD
             alias pip='pip3.6'
