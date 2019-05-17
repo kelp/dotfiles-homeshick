@@ -20,12 +20,6 @@ if status --is-interactive
         set -x COLORTERM truecolor
     end
 
-    # I often run neofetch from here on remote servers, which will break
-    # non-interactive things. Must be run only in non-interactive shells.
-    if [ -f $HOME/.config/fish/local.config.fish ]
-        source $HOME/.config/fish/local.config.fish
-    end
-
     # Aliases
     alias vi="nvim"
     alias view="nvim -R"
