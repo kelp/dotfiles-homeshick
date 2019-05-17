@@ -14,10 +14,10 @@ if status --is-interactive
         source $HOME/.work/work.fish
     end
 
-    # Fish doesn't auto-detect alacritty as a color terminal
-    # Fix that.
+    # Gnu dircolors doesn't detect alacritty as a color terminal
+    # https://github.com/jwilm/alacritty/issues/2210
     if [ $TERM = "alacritty" ]
-        #set -x fish_term24bit 1
+        set -x COLORTERM truecolor
     end
 
     # I often run neofetch from here on remote servers, which will break
