@@ -75,6 +75,10 @@ if status --is-interactive
         end
     end
 
+
+
+
+
     # OS specific Configs 
     set -x OS (uname -s)
 
