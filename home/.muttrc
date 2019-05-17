@@ -10,6 +10,10 @@ set postponed = "+[Gmail]/Drafts"
 
 set record=""
 
+auto_view text/html    # view html automatically
+alternative_order text/plain text/enriched text/html 
+set mailcap_path = ~/.mailcap
+
 bind editor <space> noop
 macro index,pager y "<save-message>=[Gmail]/All Mail<enter><enter>" "Archive"
 macro index,pager d "<save-message>=[Gmail]/Trash<enter><enter>" "Trash"
