@@ -80,6 +80,9 @@ if status --is-interactive
             end
             motd 
             gpgagent $OS
+            # Disable the systemd pager by default, I find it more
+            # irritating than helpful.
+            set -x SYSTEMD_PAGER ''
         case OpenBSD
             alias pip='pip3.6'
             alias tar='gtar'
